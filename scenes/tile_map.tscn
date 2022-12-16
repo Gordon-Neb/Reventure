@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfevhsyubudmf"]
+
+[ext_resource type="Texture2D" uid="uid://bvbrovglo7ok8" path="res://sprites/grassy.png" id="1_0hab2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_attmb"]
+texture = ExtResource("1_0hab2")
+0:0/0 = 0
+4:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_f45pj"]
+sources/23 = SubResource("TileSetAtlasSource_attmb")
+tile_proxies/coords_level = [[5, Vector2i(0, 0)], [13, Vector2i(0, 0)], [6, Vector2i(0, 0)], [13, Vector2i(1, 0)], [7, Vector2i(0, 0)], [13, Vector2i(2, 0)], [8, Vector2i(0, 0)], [13, Vector2i(3, 0)], [9, Vector2i(0, 0)], [13, Vector2i(4, 0)], [10, Vector2i(0, 0)], [13, Vector2i(5, 0)], [11, Vector2i(0, 0)], [13, Vector2i(6, 0)], [12, Vector2i(0, 0)], [13, Vector2i(7, 0)], [14, Vector2i(0, 0)], [23, Vector2i(0, 0)], [15, Vector2i(0, 0)], [23, Vector2i(1, 0)], [16, Vector2i(0, 0)], [23, Vector2i(2, 0)], [17, Vector2i(0, 0)], [23, Vector2i(3, 0)], [18, Vector2i(0, 0)], [23, Vector2i(4, 0)], [19, Vector2i(0, 0)], [23, Vector2i(5, 0)], [20, Vector2i(0, 0)], [23, Vector2i(6, 0)], [21, Vector2i(0, 0)], [23, Vector2i(7, 0)]]
+
+[node name="TileMap" type="TileMap"]
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_f45pj")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262167, 0, 1, 393239, 0, 2, 262167, 0, 3, 327703, 0, 4, 458775, 0, 5, 393239, 0, 6, 327703, 0, 7, 262167, 0, 8, 458775, 0, 9, 262167, 0, 10, 327703, 0, 11, 393239, 0, 12, 458775, 0, 65536, 23, 0, 65537, 131095, 0, 65538, 65559, 0, 65539, 23, 0, 65540, 196631, 0, 65541, 23, 0, 65542, 65559, 0, 65543, 196631, 0, 65544, 23, 0, 65545, 23, 0, 65546, 65559, 0, 65547, 131095, 0, 65548, 23, 0, 131084, 23, 0, 131083, 23, 0, 131082, 23, 0, 131081, 196631, 0, 131080, 65559, 0, 131079, 23, 0, 131078, 23, 0, 131077, 65559, 0, 131076, 23, 0, 131075, 23, 0, 131074, 131095, 0, 131073, 23, 0, 131072, 23, 0)
