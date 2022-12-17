@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="Reventure"
+run/main_scene="res://scenes/Scene1.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
