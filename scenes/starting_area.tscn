@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://buegv27b7olai"]
 
-[ext_resource type="Texture2D" uid="uid://bvbrovglo7ok8" path="res://sprites/grassy.png" id="1_fm3yp"]
-[ext_resource type="PackedScene" uid="uid://ddj0g1l6m34o4" path="res://scenes/player.tscn" id="2_gojme"]
+[ext_resource type="Texture2D" uid="uid://bvbrovglo7ok8" path="res://sprites/grassy.png" id="1_3k1o8"]
+[ext_resource type="PackedScene" uid="uid://ddj0g1l6m34o4" path="res://scenes/player.tscn" id="2_b235m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17lyn"]
-texture = ExtResource("1_fm3yp")
+texture = ExtResource("1_3k1o8")
 0:0/next_alternative_id = 3
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -57,5 +57,6 @@ position = Vector2(68, -21)
 current = true
 zoom = Vector2(2.5, 2.5)
 
-[node name="Player" parent="." instance=ExtResource("2_gojme")]
+[node name="Player" parent="." instance=ExtResource("2_b235m")]
 position = Vector2(-116, 24)
+FRICTION = 12
