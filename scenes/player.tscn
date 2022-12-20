@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dxqrrlgvs33s2" path="res://sprites/character/CharacterDraft.png" id="2_eq525"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqndn"]
-size = Vector2(20, 31)
+size = Vector2(19, 31)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cnq4i")
+ACCELERATION = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -17,7 +18,7 @@ hframes = 2
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -5.5)
+position = Vector2(-7.5, -5.5)
 shape = SubResource("RectangleShape2D_qqndn")
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
@@ -28,5 +29,14 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
+[node name="WallTouchedTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallSlideTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_coyote_jump_timer_timeout"]
+[connection signal="timeout" from="WallTouchedTimer" to="." method="_on_wall_touched_timer_timeout"]
+[connection signal="timeout" from="WallSlideTimer" to="." method="_on_wall_slide_timer_timeout"]
