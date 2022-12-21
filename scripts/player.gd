@@ -51,6 +51,8 @@ func move_state(input):
 	if horizontal_move(input):
 		apply_acceleration(input.x)
 
+	if is_on_floor():
+		DOUBLE_JUMPS = 1
 	if can_jump():
 		input_jump(input)
 	else:
