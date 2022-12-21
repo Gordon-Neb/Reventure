@@ -58,5 +58,5 @@ current = true
 zoom = Vector2(2.5, 2.5)
 
 [node name="Player" parent="." instance=ExtResource("2_b235m")]
-position = Vector2(-116, 24)
+position = Vector2(35, -39)
 FRICTION = 12

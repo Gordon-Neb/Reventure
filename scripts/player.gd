@@ -3,7 +3,9 @@ extends CharacterBody2D
 #State Machine
 enum {
 	MOVE,
-	CLIMB
+	CLIMB,
+	WALL,
+	JUMP
 }
 var state = MOVE
 
@@ -41,40 +43,58 @@ func _physics_process(delta):
 	match state:
 		MOVE: move_state(input)
 		CLIMB:climb_state(input)
+		WALL: wall_state(input)
+		JUMP: jump_state(input)
+	
+	#if state == 3: print("test")
+	#if state == 0: print("hello")
+	apply_gravity(GRAVITY) #Gravity should be applied the whole time
 		
 func move_state(input):
-	apply_gravity(GRAVITY)
+	DOUBLE_JUMPS = 1 #if character is in move state aka. touches ground he will get his double jump back
 	
+	if is_on_wall():
+		state = WALL
+	elif can_jump(): state = JUMP
+		
 	if not horizontal_move(input):
 		apply_friction()
 		
 	if horizontal_move(input):
 		apply_acceleration(input.x)
 
-	if is_on_floor():
-		DOUBLE_JUMPS = 1
-	if can_jump():
-		input_jump(input)
-	else:
-		input_jump_release()
-		input_double_jump()
-		buffered_jump()
-		fast_fall()
-		input_wall_jump(input)
-		
-	var was_on_floor = is_on_floor() #Remember Floor State
 	move_and_slide() #Do Movement and get next State
-	var just_left_ground = not is_on_floor() and was_on_floor
-	do_coyote_jump(just_left_ground)
+	
+func wall_state(input):
+	velocity.y = WALL_GRAVITY
+	if is_on_floor():
+		state = MOVE
+	move_and_slide()
+		
+func jump_state(input):
+	
+	
+	input_jump(input)
+	input_jump_release()
+	#if is_on_floor(): state = MOVE
+	#input_double_jump()
+	#buffered_jump()
+	#fast_fall()
+	#input_wall_jump(input)
+		
+	#var was_on_floor = is_on_floor() #Remember Floor State
+	move_and_slide() #Do Movement and get next State
+	#var just_left_ground = not is_on_floor() and was_on_floor
+	#do_coyote_jump(just_left_ground)
 
 func climb_state(input): #to be added
 	pass
-		
-func can_jump():
-	return is_on_floor() or coyote_jump
 
+func can_jump():
+	return (is_on_floor() or coyote_jump) and Input.is_action_just_pressed("Jump")
+	
 func input_jump(input):
-	if Input.is_action_just_pressed("Jump") or buffer_jump:
+	#if state == JUMP or buffer_jump:
 		velocity.y = JUMP_FORCE
 		buffer_jump = false
 	
@@ -94,6 +114,7 @@ func fast_fall():
 		
 	if velocity.y > 0 and not is_on_wall():
 		velocity.y += FALL_GRAVITY
+
 func input_double_jump():
 	if Input.is_action_just_pressed("Jump") and DOUBLE_JUMPS > 0:
 		velocity.y = JUMP_FORCE
@@ -136,11 +157,9 @@ func _on_jump_buffer_timer_timeout():
 func _on_coyote_jump_timer_timeout():
 	coyote_jump = false
 
-
 func _on_wall_touched_timer_timeout():
 	wall_jump = false
 	print("WallJump")
-
 
 func _on_wall_slide_timer_timeout():
 	wall_slide = false
