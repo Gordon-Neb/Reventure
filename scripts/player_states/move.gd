@@ -1,18 +1,6 @@
 extends BaseState
 class_name MoveState
 
- 
-
-#Get Node State References Boiler Plate Code
-@onready var idle_node = $"../idle"
-@onready var walk_node = $"../walk"
-@onready var run_node = $"../run"
-@onready var jump_node = $"../jump"
-@onready var fall_node = $"../fall"
-@onready var dash_node = $"../dash"
-#Get Player Stat Data
-var playerStats = preload("res://Player_Stat_Data.tres")
-
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("Jump"):
 		return jump_node

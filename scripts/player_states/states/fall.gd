@@ -2,13 +2,7 @@ extends BaseState
 
 @export  var move_speed = 60
 
-#Get Node State References Boiler Plate Code
-@onready var idle_node = $"../idle"
-@onready var walk_node = $"../walk"
-@onready var run_node = $"../run"
-@onready var jump_node = $"../jump"
-@onready var fall_node = $"../fall"
-@onready var dash_node = $"../dash"
+
 
 func physics_process(_delta: float) -> BaseState:
 	var move = 0

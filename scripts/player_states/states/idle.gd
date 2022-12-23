@@ -1,14 +1,5 @@
 extends BaseState
 
-
-#Get Node State References Boiler Plate Code
-@onready var idle_node = $"../idle"
-@onready var walk_node = $"../walk"
-@onready var run_node = $"../run"
-@onready var jump_node = $"../jump"
-@onready var fall_node = $"../fall"
-@onready var dash_node = $"../dash"
-
 func enter() -> void:
 	super.enter()
 	player.velocity.x = 0
