@@ -23,11 +23,17 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://scripts/player.gd"
+}, {
+"base": "Resource",
+"class": &"Player_Stat_Data",
+"language": &"GDScript",
+"path": "res://player_stat_data.gd"
 }]
 _global_script_class_icons={
 "BaseState": "",
 "MoveState": "",
-"Player": ""
+"Player": "",
+"Player_Stat_Data": ""
 }
 
 [application]

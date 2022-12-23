@@ -1,7 +1,7 @@
 extends BaseState
 
 @export var jump_force = 200
-@export var move_speed = 60
+@export var move_speed = 100
 
 #Get Node State References Boiler Plate Code
 @onready var idle_node = $"../idle"
