@@ -8,11 +8,14 @@ func physics_process(_delta: float) -> BaseState:
 	
 	#if player.is_on_wall():
 		#return slide_node
-	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
-		playerStats.JUMP_COUNT-=1	
+		
+		#This if statements needs a freakin refactoring of doom holy moly... xD but for now idc
+	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0 and (playerStats.CAN_JUMP or playerStats.COYOTE_JUMP):
+		playerStats.JUMP_COUNT-=1
+		playerStats.COYOTE_JUMP = false	
 		return jump_node
 	
-	elif Input.is_action_just_pressed("Jump"):
+	elif Input.is_action_just_pressed("Jump"): #Player runs out of double jumps and tries to jump right before on ground level
 		playerStats.BUFFERED_JUMP = true
 		player.jumpBufferTimer.start()	
 	var move = 0
@@ -34,13 +37,12 @@ func physics_process(_delta: float) -> BaseState:
 	player.velocity = player.velocity
 
 	if player.is_on_floor():
-		playerStats.JUMP_COUNT = 2 #Maybe there's a better way for doing this in jump logic
+		playerStats.CAN_JUMP = false
+		playerStats.JUMP_COUNT = 1 #Maybe there's a better way for doing this in jump logic
 		if playerStats.BUFFERED_JUMP:
 			playerStats.JUMP_COUNT -= 1
 			return jump_node
 			
-		
-		
 		if move != 0:
 			if Input.is_action_pressed("Sprint"):
 				return run_node

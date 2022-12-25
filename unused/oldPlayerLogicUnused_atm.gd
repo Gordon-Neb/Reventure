@@ -64,8 +64,10 @@
 #	#var was_on_floor = is_on_floor() #Remember Floor State
 #	move_and_slide() #Do Movement and get next State
 #	#var just_left_ground = not is_on_floor() and was_on_floor
-#	#do_coyote_jump(just_left_ground)
-#
+##func do_coyote_jump(just_left_ground):
+#	if just_left_ground and velocity.y >= 0:
+#		coyote_jump = true
+#		coyoteJumpTimer.start()
 #func climb_state(input): #to be added
 #	pass
 #
@@ -80,29 +82,14 @@
 #func input_jump_release():
 #	if Input.is_action_just_released("Jump") and velocity.y < JUMP_RELEASE_FORCE:
 #		velocity.y = JUMP_RELEASE_FORCE
-#
-#func buffered_jump():
-#	if Input.is_action_just_pressed("Jump"):
-#		buffer_jump = true
-#		jumpBufferTimer.start()
-#
-#func fast_fall():
-#	if is_on_wall() and wall_slide:
-#		print("slide")
-#		velocity.y = WALL_GRAVITY
-#
-#	if velocity.y > 0 and not is_on_wall():
-#		velocity.y += FALL_GRAVITY
-#
+
+
 #func input_double_jump():
 #	if Input.is_action_just_pressed("Jump") and DOUBLE_JUMPS > 0:
 #		velocity.y = JUMP_FORCE
 #		DOUBLE_JUMPS-=1
 #
-#func do_coyote_jump(just_left_ground):
-#	if just_left_ground and velocity.y >= 0:
-#		coyote_jump = true
-#		coyoteJumpTimer.start()
+
 #
 #func input_wall_jump(input):
 #	if is_on_wall() and Input.is_action_just_pressed("Jump") and input.x != 0:

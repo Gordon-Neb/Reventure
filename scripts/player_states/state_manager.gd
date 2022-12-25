@@ -10,7 +10,7 @@ func change_state(new_state: BaseState) -> void:
 	
 	current_state = new_state
 	current_state.enter()
-	#print(current_state) #Test current state
+	print(current_state) #Test current state
 	
 # Initialize the state machine by giving each state a reference to the objects
 # owned by the parent that they should be able to take control of

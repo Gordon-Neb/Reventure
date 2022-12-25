@@ -28,8 +28,15 @@ func physics_process(_delta: float) -> BaseState:
 	player.velocity.x = move * playerStats.RUN_SPEED
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)
+	
+	var was_on_floor = player.is_on_floor()
 	player.move_and_slide()
+	var just_left_ground = player.is_on_floor() and was_on_floor
 	player.velocity = player.velocity
+	
+	if just_left_ground and player.velocity.y >= 0:
+		playerStats.COYOTE_JUMP = true
+		player.coyoteJumpTimer.start()
 	
 	if move == 0:
 		return idle_node

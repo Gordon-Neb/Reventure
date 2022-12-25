@@ -32,16 +32,12 @@ func _process(delta: float) -> void:
 
 func _on_jump_buffer_timer_timeout():
 	playerStats.BUFFERED_JUMP = false
-	print(playerStats.BUFFERED_JUMP)
-
 
 func _on_coyote_jump_timer_timeout():
-	pass # Replace with function body.
-
+	playerStats.COYOTE_JUMP = false
 
 func _on_wall_touched_timer_timeout():
 	pass # Replace with function body.
-
 
 func _on_wall_slide_timer_timeout():
 	pass # Replace with function body.

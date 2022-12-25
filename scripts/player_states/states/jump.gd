@@ -8,7 +8,8 @@ func enter() -> void:
 	
 
 func physics_process(_delta: float) -> BaseState:
-	#print(playerStats.DOUBLE_JUMPS)
+	playerStats.CAN_JUMP = true
+	
 	var move = 0
 	if Input.is_action_pressed("Left"):
 		move = -1
@@ -26,7 +27,6 @@ func physics_process(_delta: float) -> BaseState:
 		player.velocity.y = playerStats.JUMP_RELEASE_FORCE
 		
 	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
-		print("test")
 		playerStats.JUMP_COUNT -=1	
 		player.velocity.y = playerStats.JUMP_FORCE
 		
