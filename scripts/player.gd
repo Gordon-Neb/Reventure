@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var gravity = 4
+#@export var gravity = 4
 @onready var states = $state_manager
 
 func _ready() -> void:

@@ -24,7 +24,7 @@ func physics_process(_delta: float) -> BaseState:
 #	elif move > 0:
 #	player.animations.flip_h = false
 	
-	player.velocity.y += player.gravity
+	player.velocity.y += playerStats.GRAVITY
 	player.velocity.x = move * playerStats.RUN_SPEED
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)

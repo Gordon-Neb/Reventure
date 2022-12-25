@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cv5em80b7ie01"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cnq4i"]
-[ext_resource type="Resource" uid="uid://d3n683osfegt" path="res://Player_Stat_Data.tres" id="2_8qoqs"]
+[ext_resource type="Resource" path="res://Player_Stat_Data.tres" id="2_8qoqs"]
 [ext_resource type="Texture2D" uid="uid://dxqrrlgvs33s2" path="res://sprites/character/CharacterDraft.png" id="2_eq525"]
 [ext_resource type="PackedScene" uid="uid://c7wirts7m14wn" path="res://scenes/state_manager.tscn" id="3_cge1b"]
 [ext_resource type="Script" path="res://scripts/player_states/states/idle.gd" id="4_30oex"]
@@ -63,7 +63,6 @@ script = ExtResource("8_c6wu8")
 
 [node name="dash" type="Node" parent="state_manager"]
 script = ExtResource("9_8xyg7")
-move_speed = null
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_coyote_jump_timer_timeout"]

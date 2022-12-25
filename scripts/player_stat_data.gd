@@ -3,7 +3,7 @@ class_name Player_Stat_Data
 
 @export var JUMP_FORCE = -210
 @export var JUMP_RELEASE_FORCE = -70
-@export var DOUBLE_JUMPS = 1
+@export var DOUBLE_JUMPS = 5
 @export var WALL_JUMPS = 1
 @export var WALK_SPEED = 100
 @export var RUN_SPEED = 200

@@ -16,7 +16,7 @@ func input(_event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(_delta: float) -> BaseState:
-	player.velocity.y += player.gravity
+	player.velocity.y += playerStats.GRAVITY
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
