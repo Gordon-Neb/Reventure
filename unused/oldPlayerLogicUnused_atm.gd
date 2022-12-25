@@ -1,29 +1,5 @@
-# CRTL + k to quick comment out 
-#extends Node
-#extends CharacterBody2D
-#class_name Player
-#
-##State Machine
-#enum {
-#	MOVE,
-#	CLIMB,
-#	WALL,
-#	JUMP
-#}
-#var state = MOVE
-#
-#@export var JUMP_FORCE = -210
-#@export var JUMP_RELEASE_FORCE = -70
-#@export var DOUBLE_JUMPS = 1
-#@export var WALL_JUMPS = 1
-#@export var MAX_SPEED = 150
-#@export var ACCELERATION = 12
-#@export var FRICTION = 10
-#@export var GRAVITY = 5
-#@export var FALL_GRAVITY = 2
-#@export var PUSH_DISTANCE = 100
-#@export var WALL_GRAVITY = 50
-#
+
+
 #@onready var coyoteJumpTimer := $CoyoteJumpTimer
 #var coyote_jump = false
 #

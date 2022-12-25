@@ -25,12 +25,15 @@ func physics_process(_delta: float) -> BaseState:
 	if Input.is_action_just_released("Jump") and player.velocity.y < playerStats.JUMP_RELEASE_FORCE:
 		player.velocity.y = playerStats.JUMP_RELEASE_FORCE
 		
-	if Input.is_action_just_pressed("Jump") and playerStats.DOUBLE_JUMPS > 0:
-		playerStats.DOUBLE_JUMPS -=1	
-		print("Jumpi dumpi")
+	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
+		print("test")
+		playerStats.JUMP_COUNT -=1	
 		player.velocity.y = playerStats.JUMP_FORCE
-			
 		
+	elif Input.is_action_just_pressed("Jump"):
+		playerStats.BUFFERED_JUMP = true
+		player.jumpBufferTimer.start()	
+			
 	player.velocity.y += playerStats.GRAVITY
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)
