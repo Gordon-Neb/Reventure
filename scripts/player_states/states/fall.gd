@@ -5,6 +5,13 @@ extends BaseState
 
 
 func physics_process(_delta: float) -> BaseState:
+	
+	#if player.is_on_wall():
+		#return slide_node
+	if Input.is_action_just_pressed("Jump") and playerStats.DOUBLE_JUMPS > 0:
+		playerStats.DOUBLE_JUMPS-=1	
+		return jump_node
+		
 	var move = 0
 	if Input.is_action_pressed("Left"):
 		move = -1
@@ -24,6 +31,7 @@ func physics_process(_delta: float) -> BaseState:
 	player.velocity = player.velocity
 
 	if player.is_on_floor():
+		playerStats.DOUBLE_JUMPS = 2 #Maybe there's a better way for doing this in jump logic
 		if move != 0:
 			if Input.is_action_pressed("Sprint"):
 				return run_node

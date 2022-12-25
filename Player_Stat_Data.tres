@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bufc8v6qfteg"]
 
 [ext_resource type="Script" path="res://scripts/player_stat_data.gd" id="1_apl5l"]
 
@@ -6,9 +6,10 @@
 script = ExtResource("1_apl5l")
 JUMP_FORCE = -210
 JUMP_RELEASE_FORCE = -70
-DOUBLE_JUMPS = 1
+DOUBLE_JUMPS = 2
 WALL_JUMPS = 1
-MAX_SPEED = 150
+WALK_SPEED = 100
+RUN_SPEED = 200
 ACCELERATION = 12
 FRICTION = 10
 GRAVITY = 5
