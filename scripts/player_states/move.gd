@@ -1,7 +1,10 @@
 extends BaseState
 class_name MoveState
 
-
+func enter() -> void:
+	super.enter()
+	playerStats.CAN_JUMP = false
+	playerStats.JUMP_COUNT = 2 #Maybe there's a better way for doing this in jump logic
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("Jump"):
@@ -15,8 +18,7 @@ func input(_event: InputEvent) -> BaseState:
 func physics_process(_delta: float) -> BaseState:
 	if !player.is_on_floor():
 		return fall_node
-
-	
+		
 	var move = get_movement_input()
 #	if move < 0:
 #		player.animations.flip_h = true

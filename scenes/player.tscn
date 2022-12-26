@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv5em80b7ie01"]
+[gd_scene load_steps=13 format=3 uid="uid://cf5ln26t04gld"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cnq4i"]
 [ext_resource type="Resource" uid="uid://bufc8v6qfteg" path="res://Player_Stat_Data.tres" id="2_8qoqs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/player_states/states/fall.gd" id="7_jkdiy"]
 [ext_resource type="Script" path="res://scripts/player_states/states/run.gd" id="8_c6wu8"]
 [ext_resource type="Script" path="res://scripts/player_states/states/dash.gd" id="9_8xyg7"]
+[ext_resource type="Script" path="res://scripts/player_states/states/slide.gd" id="11_8pf5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqndn"]
 size = Vector2(19, 31)
@@ -63,6 +64,9 @@ script = ExtResource("8_c6wu8")
 
 [node name="dash" type="Node" parent="state_manager"]
 script = ExtResource("9_8xyg7")
+
+[node name="slide" type="Node" parent="state_manager"]
+script = ExtResource("11_8pf5l")
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_coyote_jump_timer_timeout"]

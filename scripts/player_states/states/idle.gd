@@ -3,6 +3,8 @@ extends BaseState
 func enter() -> void:
 	super.enter()
 	player.velocity.x = 0
+	playerStats.CAN_JUMP = false
+	playerStats.JUMP_COUNT = 2 #Maybe there's a better way for doing this in jump logic
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("Left") or Input.is_action_just_pressed("Right"):
