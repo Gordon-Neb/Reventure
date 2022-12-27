@@ -20,8 +20,7 @@ func physics_process(_delta: float) -> BaseState:
 		
 	player.velocity.x = move * playerStats.WALK_SPEED
 	
-	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
-		playerStats.JUMP_COUNT-=1
+	if Input.is_action_just_pressed("Jump") and move != 0:
 		playerStats.WALL_JUMP = true
 		player.wallTouchedTimer.start()
 		return jump_node
