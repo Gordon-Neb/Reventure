@@ -20,11 +20,10 @@ func physics_process(_delta: float) -> BaseState:
 		
 	player.velocity.x = move * playerStats.WALK_SPEED
 	
-	if Input.is_action_just_pressed("Jump"):
-		#Worsk but jump logic interfers instantly after this distance is applied need timer for that
-		player.velocity.x = -move * playerStats.PUSH_DISTANCE
-		player.move_and_slide()
-		player.wallSlideTimer.start()
+	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
+		playerStats.JUMP_COUNT-=1
+		playerStats.WALL_JUMP = true
+		player.wallTouchedTimer.start()
 		return jump_node
 		
 	player.velocity.y = playerStats.WALL_GRAVITY

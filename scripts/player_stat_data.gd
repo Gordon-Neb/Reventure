@@ -5,7 +5,7 @@ class_name Player_Stat_Data
 @export var JUMP_FORCE = -210
 @export var JUMP_RELEASE_FORCE = -70
 @export var JUMP_COUNT = 2
-@export var WALL_JUMPS = 1
+@export var WALL_JUMP = false
 @export var CAN_JUMP = false #Should only be true while switching from jump to fall!
 @export var BUFFERED_JUMP = false
 @export var COYOTE_JUMP = false
@@ -18,7 +18,7 @@ class_name Player_Stat_Data
 @export var GRAVITY = 5
 @export var FALL_GRAVITY = 2
 
-@export var PUSH_DISTANCE = 100
+@export var PUSH_DISTANCE = 50 #may need some adjustment!
 @export var WALL_GRAVITY = 50
 
 

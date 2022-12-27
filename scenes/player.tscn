@@ -68,6 +68,13 @@ script = ExtResource("9_8xyg7")
 [node name="slide" type="Node" parent="state_manager"]
 script = ExtResource("11_8pf5l")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -25)
+current = true
+zoom = Vector2(2.5, 2.5)
+limit_smoothed = true
+position_smoothing_speed = 3.0
+
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_coyote_jump_timer_timeout"]
 [connection signal="timeout" from="WallTouchedTimer" to="." method="_on_wall_touched_timer_timeout"]
