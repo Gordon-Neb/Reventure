@@ -5,14 +5,15 @@ func physics_process(_delta: float) -> BaseState:
 	if player.is_on_wall():
 		return slide_node
 		
+		
 		#This if statements needs a freakin refactoring of doom holy moly... xD but for now idc
-	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0 and (playerStats.CAN_JUMP or playerStats.COYOTE_JUMP):
-		playerStats.JUMP_COUNT-=1
+	if Input.is_action_just_pressed("Jump") and playerStats.JUMPS_LEFT > 0 and (playerStats.CAN_JUMP or playerStats.COYOTE_JUMP):
+		playerStats.JUMPS_LEFTT-=1
 		playerStats.COYOTE_JUMP = false	
 		return jump_node
 		
-	elif Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 1:
-		playerStats.JUMP_COUNT-=2
+	elif Input.is_action_just_pressed("Jump") and playerStats.JUMPS_LEFT > 1:
+		playerStats.JUMPS_LEFT-=2
 		return jump_node
 	elif Input.is_action_just_pressed("Jump"): #Player runs out of double jumps and tries to jump right before on ground level
 		playerStats.BUFFERED_JUMP = true
@@ -27,7 +28,7 @@ func physics_process(_delta: float) -> BaseState:
 
 	player.velocity.x = move * playerStats.WALK_SPEED
 		
-	player.velocity.y += (playerStats.GRAVITY + playerStats.FALL_GRAVITY) #fall gravity can be adjusted later
+	player.velocity.y += playerStats.FALL_GRAVITY #fall gravity can be adjusted later
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
@@ -35,9 +36,9 @@ func physics_process(_delta: float) -> BaseState:
 
 	if player.is_on_floor():
 		playerStats.CAN_JUMP = false
-		playerStats.JUMP_COUNT = 2 #Maybe there's a better way for doing this in jump logic
+		playerStats.JUMPS_LEFT = playerStats.MAX_JUMP_COUNT
 		if playerStats.BUFFERED_JUMP:
-			playerStats.JUMP_COUNT -= 1
+			playerStats.JUMPS_LEFT -= 1
 			return jump_node
 			
 		if move != 0:

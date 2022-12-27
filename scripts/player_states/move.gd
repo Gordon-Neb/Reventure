@@ -4,7 +4,6 @@ class_name MoveState
 func enter() -> void:
 	super.enter()
 	playerStats.CAN_JUMP = false
-	playerStats.JUMP_COUNT = 2 #Maybe there's a better way for doing this in jump logic
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("Jump"):
@@ -16,6 +15,8 @@ func input(_event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(_delta: float) -> BaseState:
+	player.velocity.y += playerStats.GRAVITY
+	
 	if !player.is_on_floor():
 		return fall_node
 		
@@ -28,6 +29,8 @@ func physics_process(_delta: float) -> BaseState:
 	if move == 0:
 		return idle_node
 
+
+		
 	return null
 
 func get_movement_input() -> int:

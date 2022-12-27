@@ -5,8 +5,6 @@ func enter() -> void:
 	player.velocity.x = 0
 
 func input(_event: InputEvent) -> BaseState:
-	
-	
 	return null
 
 func physics_process(_delta: float) -> BaseState:
@@ -26,10 +24,10 @@ func physics_process(_delta: float) -> BaseState:
 		return jump_node
 		
 	player.velocity.y = playerStats.WALL_GRAVITY
-	player.set_velocity(player.velocity)
-	player.set_up_direction(Vector2.UP)
+	#player.set_velocity(player.velocity)
+	#player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
-	player.velocity = player.velocity
+	#player.velocity = player.velocity
 	
 	if player.is_on_floor():
 		if move != 0:

@@ -5,7 +5,7 @@ func enter() -> void:
 	# to make sure the animation switches
 	super.enter()
 	player.velocity.y = playerStats.JUMP_FORCE
-	
+
 
 func physics_process(_delta: float) -> BaseState:
 	playerStats.CAN_JUMP = true
@@ -26,19 +26,17 @@ func physics_process(_delta: float) -> BaseState:
 		player.velocity.x = -move * playerStats.PUSH_DISTANCE
 		
 	player.velocity.y += playerStats.GRAVITY
-	#player.set_velocity(player.velocity)
-	#player.set_up_direction(Vector2.UP)
+
 	player.move_and_slide()
-	#player.velocity = player.velocity
-	#print(player.velocity.y)
+
 	if player.velocity.y > 0:
 		return fall_node
 		
 	if Input.is_action_just_released("Jump") and player.velocity.y < playerStats.JUMP_RELEASE_FORCE:
 		player.velocity.y = playerStats.JUMP_RELEASE_FORCE
 		
-	if Input.is_action_just_pressed("Jump") and playerStats.JUMP_COUNT > 0:
-		playerStats.JUMP_COUNT -=1	
+	if Input.is_action_just_pressed("Jump") and playerStats.JUMPS_LEFT > 0:
+		playerStats.JUMPS_LEFT -=1	
 		player.velocity.y = playerStats.JUMP_FORCE
 		
 	elif Input.is_action_just_pressed("Jump"):
