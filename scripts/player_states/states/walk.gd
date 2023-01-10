@@ -21,10 +21,7 @@ func physics_process(_delta: float) -> BaseState:
 #	elif move > 0:
 #	player.animations.flip_h = false
 
-
-	player.velocity.x = move_toward(player.velocity.x, 
-	move * playerStats.WALK_SPEED, 
-	playerStats.ACCELERATION)
+	player.velocity.x =  move * playerStats.WALK_SPEED
 	
 	var was_on_floor = player.is_on_floor()
 	player.move_and_slide()

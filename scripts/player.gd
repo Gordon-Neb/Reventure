@@ -37,7 +37,4 @@ func _on_coyote_jump_timer_timeout():
 	playerStats.COYOTE_JUMP = false
 
 func _on_wall_touched_timer_timeout():
-	playerStats.WALL_JUMP = false
-
-func _on_wall_slide_timer_timeout():
-	pass
+	playerStats.WALL_TOUCHED = false

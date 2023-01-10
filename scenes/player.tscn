@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf5ln26t04gld"]
+[gd_scene load_steps=14 format=3 uid="uid://cf5ln26t04gld"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cnq4i"]
 [ext_resource type="Resource" uid="uid://bufc8v6qfteg" path="res://Player_Stat_Data.tres" id="2_8qoqs"]
-[ext_resource type="Texture2D" uid="uid://dxqrrlgvs33s2" path="res://sprites/character/CharacterDraft.png" id="2_eq525"]
 [ext_resource type="PackedScene" uid="uid://c7wirts7m14wn" path="res://scenes/state_manager.tscn" id="3_cge1b"]
 [ext_resource type="Script" path="res://scripts/player_states/states/idle.gd" id="4_30oex"]
 [ext_resource type="Script" path="res://scripts/player_states/states/walk.gd" id="5_lum2i"]
@@ -11,6 +10,9 @@
 [ext_resource type="Script" path="res://scripts/player_states/states/run.gd" id="8_c6wu8"]
 [ext_resource type="Script" path="res://scripts/player_states/states/dash.gd" id="9_8xyg7"]
 [ext_resource type="Script" path="res://scripts/player_states/states/slide.gd" id="11_8pf5l"]
+[ext_resource type="Script" path="res://scenes/walljump.gd" id="11_33vqn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_30tfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqndn"]
 size = Vector2(19, 31)
@@ -22,7 +24,7 @@ metadata/Player_Stat_Data = ExtResource("2_8qoqs")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-5.5, -5.5)
-texture = ExtResource("2_eq525")
+texture = SubResource("CompressedTexture2D_30tfa")
 hframes = 2
 vframes = 2
 
@@ -35,14 +37,11 @@ wait_time = 0.2
 one_shot = true
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.3
 one_shot = true
 
 [node name="WallTouchedTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="WallSlideTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="state_manager" parent="." instance=ExtResource("3_cge1b")]
@@ -68,6 +67,9 @@ script = ExtResource("9_8xyg7")
 [node name="slide" type="Node" parent="state_manager"]
 script = ExtResource("11_8pf5l")
 
+[node name="walljump" type="Node" parent="state_manager"]
+script = ExtResource("11_33vqn")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -25)
 current = true
@@ -77,4 +79,3 @@ position_smoothing_speed = 3.0
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_coyote_jump_timer_timeout"]
 [connection signal="timeout" from="WallTouchedTimer" to="." method="_on_wall_touched_timer_timeout"]
-[connection signal="timeout" from="WallSlideTimer" to="." method="_on_wall_slide_timer_timeout"]

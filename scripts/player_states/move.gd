@@ -3,7 +3,10 @@ class_name MoveState
 
 func enter() -> void:
 	super.enter()
+	
+	playerStats.JUMPS_LEFT = playerStats.MAX_JUMP_COUNT # Reset Jumps
 	playerStats.CAN_JUMP = false
+	#playerStats.WALL_JUMP = true
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("Jump"):
@@ -29,8 +32,6 @@ func physics_process(_delta: float) -> BaseState:
 	if move == 0:
 		return idle_node
 
-
-		
 	return null
 
 func get_movement_input() -> int:

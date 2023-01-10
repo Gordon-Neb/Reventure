@@ -9,6 +9,7 @@ class_name BaseState
 @onready var fall_node = $"../fall"
 @onready var dash_node = $"../dash"
 @onready var slide_node = $"../slide"
+@onready var walljump_node = $"../walljump"
 # Pass in a reference to the player's kinematic body so that it can be used by the state
 var player: Player 
 #export animation if wanted

@@ -2,8 +2,9 @@ extends BaseState
 
 func enter() -> void:
 	super.enter()
-
-	playerStats.CAN_JUMP = false
+	playerStats.JUMPS_LEFT = playerStats.MAX_JUMP_COUNT # Reset Jumps
+	#playerStats.ALLOW_MIDAIR_JUMP = false
+	playerStats.ALLOW_WALL_JUMP = true
 
 func input(_event: InputEvent) -> BaseState:
 
@@ -18,7 +19,7 @@ func input(_event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(_delta: float) -> BaseState:
-	player.velocity.x = move_toward(player.velocity.x, 0, playerStats.FRICTION)
+	player.velocity.x = 0
 	player.velocity.y += playerStats.GRAVITY
 	player.move_and_slide()
 	return null

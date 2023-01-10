@@ -1,10 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://buegv27b7olai"]
 
-[ext_resource type="Texture2D" uid="uid://bvbrovglo7ok8" path="res://sprites/grassy.png" id="1_3k1o8"]
 [ext_resource type="PackedScene" uid="uid://cf5ln26t04gld" path="res://scenes/player.tscn" id="2_b235m"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vls5u"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17lyn"]
-texture = ExtResource("1_3k1o8")
+texture = SubResource("CompressedTexture2D_vls5u")
 0:0/next_alternative_id = 3
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
