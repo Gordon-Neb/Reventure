@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cf5ln26t04gld"]
+[gd_scene load_steps=20 format=3 uid="uid://cf5ln26t04gld"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cnq4i"]
 [ext_resource type="Resource" uid="uid://bufc8v6qfteg" path="res://Player_Stat_Data.tres" id="2_8qoqs"]
+[ext_resource type="Texture2D" uid="uid://ci3ifx4wyybnv" path="res://sprites/Character/character-export.png" id="3_2mt5c"]
 [ext_resource type="PackedScene" uid="uid://c7wirts7m14wn" path="res://scenes/state_manager.tscn" id="3_cge1b"]
 [ext_resource type="Script" path="res://scripts/player_states/states/idle.gd" id="4_30oex"]
 [ext_resource type="Script" path="res://scripts/player_states/states/walk.gd" id="5_lum2i"]
@@ -12,24 +13,120 @@
 [ext_resource type="Script" path="res://scripts/player_states/states/slide.gd" id="11_8pf5l"]
 [ext_resource type="Script" path="res://scenes/walljump.gd" id="11_33vqn"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_30tfa"]
+[sub_resource type="Animation" id="Animation_x4bi8"]
+resource_name = "Walk_Right"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 11, 9]
+}
+
+[sub_resource type="Animation" id="Animation_2kcg2"]
+resource_name = "Idle_Right"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_g5761"]
+resource_name = "Idle_Front"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 5]
+}
+
+[sub_resource type="Animation" id="Animation_w6dav"]
+resource_name = "Idle_Back"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_xuy5s"]
+resource_name = "Run_Right"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_45wmd"]
+_data = {
+"Idle_Back": SubResource("Animation_w6dav"),
+"Idle_Front": SubResource("Animation_g5761"),
+"Idle_Right": SubResource("Animation_2kcg2"),
+"Run_Right": SubResource("Animation_xuy5s"),
+"Walk_Right": SubResource("Animation_x4bi8")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqndn"]
-size = Vector2(19, 31)
+size = Vector2(42, 64)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cnq4i")
 metadata/Player_Stat_Data = ExtResource("2_8qoqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-5.5, -5.5)
-texture = SubResource("CompressedTexture2D_30tfa")
-hframes = 2
-vframes = 2
+texture = ExtResource("3_2mt5c")
+hframes = 3
+vframes = 4
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_45wmd")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, -5.5)
+position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_qqndn")
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
