@@ -18,10 +18,12 @@ func physics_process(_delta: float) -> BaseState:
 	var move = 0
 	if Input.is_action_pressed("Left"):
 		move = -1
-		#player.animations.flip_h = true
+		player.sprite.flip_h = true
+
 	elif Input.is_action_pressed("Right"):
 		move = 1
-		#player.animations.flip_h = false
+		player.sprite.flip_h = false
+
 	player.velocity.x = move * playerStats.FALL_SPEED
 
 		

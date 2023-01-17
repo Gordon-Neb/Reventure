@@ -3,7 +3,7 @@ class_name MoveState
 
 func enter() -> void:
 	super.enter()
-	
+	player.anim.play("Walk_Right")
 	playerStats.JUMPS_LEFT = playerStats.MAX_JUMP_COUNT # Reset Jumps
 	playerStats.CAN_JUMP = false
 	#playerStats.WALL_JUMP = true
@@ -23,15 +23,6 @@ func physics_process(_delta: float) -> BaseState:
 	if !player.is_on_floor():
 		return fall_node
 		
-	var move = get_movement_input()
-#	if move < 0:
-#		player.animations.flip_h = true
-#	elif move > 0:
-#	player.animations.flip_h = false
-	
-	if move == 0:
-		return idle_node
-
 	return null
 
 func get_movement_input() -> int:

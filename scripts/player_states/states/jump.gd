@@ -4,7 +4,7 @@ func enter() -> void:
 	# This calls the base class enter function, which is necessary here
 	# to make sure the animation switches
 	super.enter()
-
+	player.anim.play("Walk_Right")
 	if playerStats.JUMPS_LEFT > 0:
 		player.velocity.y = playerStats.JUMP_FORCE
 		playerStats.JUMPS_LEFT -=1
@@ -16,10 +16,10 @@ func physics_process(_delta: float) -> BaseState:
 	var move = 0
 	if Input.is_action_pressed("Left"):
 		move = -1
-		#player.animations.flip_h = true
+		player.sprite.flip_h = true
 	elif Input.is_action_pressed("Right"):
 		move = 1
-		#player.animations.flip_h = false
+		player.sprite.flip_h = false
 
 	if Input.is_action_pressed("Sprint"):	
 		player.velocity.x = move * playerStats.RUN_SPEED

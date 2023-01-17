@@ -19,10 +19,11 @@ func physics_process(_delta: float) -> BaseState:
 		return fall_node
 
 	var move = get_movement_input()
-#	if move < 0:
-#		player.animations.flip_h = true
-#	elif move > 0:
-#	player.animations.flip_h = false
+	if move < 0:
+		player.sprite.flip_h = true
+	elif move > 0:
+		player.sprite.flip_h = false
+		
 	player.velocity.x =  move * playerStats.RUN_SPEED
 	
 	var was_on_floor = player.is_on_floor()

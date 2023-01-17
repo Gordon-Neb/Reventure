@@ -5,6 +5,7 @@ func enter() -> void:
 	playerStats.JUMPS_LEFT = playerStats.MAX_JUMP_COUNT # Reset Jumps
 	#playerStats.ALLOW_MIDAIR_JUMP = false
 	playerStats.ALLOW_WALL_JUMP = true
+	player.anim.play("Idle_Front")
 
 func input(_event: InputEvent) -> BaseState:
 

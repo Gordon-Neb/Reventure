@@ -12,6 +12,8 @@ class_name Player
 
 @onready var wallSlideTimer := $WallSlideTimer
 
+@onready var anim := $AnimationPlayer
+@onready var sprite := $Sprite2D
 
 var playerStats = preload("res://Player_Stat_Data.tres")
 
